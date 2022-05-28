@@ -3,31 +3,43 @@ import java.util.Scanner;
 
 public class minMax {
     public static void main(String[] args) {
-        int n, number, min , max ;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Kaç adet sayı gireceksiniz? : ");
-        n = input.nextInt();
+        int[]arr = {-4, -21, 45, 0 , 77, 98};
+        int[]arrMin = new int[arr.length];
+        int[]arrMax = new int[arr.length];
         
-        for(int i = 1; i<= n; i++) {
-            System.out.print(i + ".nci sayıyı giriniz : ");
-            number = input.nextInt();
-            
-            if(i == 1) {
-                min = number;
-                max = number;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Bir sayı giriniz: ");
+        int inp = input.nextInt();
+        
+        int a = 0, b = 0;
+        
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i]>=inp){
+                arrMax[a] = arr[i];
+                a++;
             }
-            else {
-                if(number > max) {
-                    max = number ;
-                }
-                else{
-                    min = number ;
-                }
+             if (arr[i]<=inp){
+
+                arrMin[b]=arr[i];
+                b++;
             }
         }
-        System.out.println("En büyük sayı: " + max);
-        System.out.println("En küçük sayı: " + min);
-   
-}
-    
+        int min=arrMax[0];
+        int max=arrMin[0];
+
+
+        for (int i:arrMax){
+             if (i<min && i>inp){
+                 min=i;
+             }
+        }
+        for (int i:arrMin){
+            if (i>max && i<inp){
+                max=i;
+            }
+        }
+        System.out.println("Girilen sayidan kucuk en yakin sayi: " + max);
+        System.out.println("Girilen sayidan buyuk en yakin sayi: " + min);
+
+    }
 }
